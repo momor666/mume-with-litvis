@@ -23,6 +23,8 @@ import * as utility from "./utility";
 import useMarkdownItCodeFences from "./custom-markdown-it-features/code-fences";
 import useMarkdownItCriticMarkup from "./custom-markdown-it-features/critic-markup";
 import useMarkdownItEmoji from "./custom-markdown-it-features/emoji";
+import useMarkdownItLitvisNarrativeSchemaLabel from "./custom-markdown-it-features/litvis/narrative-schema-label";
+import useMarkdownItLitvisTripleHatReference from "./custom-markdown-it-features/litvis/triple-hat-reference";
 import useMarkdownItMath from "./custom-markdown-it-features/math";
 import useMarkdownItWikilink from "./custom-markdown-it-features/wikilink";
 
@@ -38,9 +40,16 @@ import enhanceWithFencedCodeChunks, {
 } from "./render-enhancers/fenced-code-chunks";
 import enhanceWithFencedDiagrams from "./render-enhancers/fenced-diagrams";
 import enhanceWithFencedMath from "./render-enhancers/fenced-math";
+import enhanceWithLitvis, {
+  initLitvisEnhancerCache,
+  LitvisEnhancerCache,
+} from "./render-enhancers/litvis/index";
 import enhanceWithResolvedImagePaths from "./render-enhancers/resolved-image-paths";
 
 import { parseAttributes, stringifyAttributes } from "./lib/attributes";
+import postEnhanceWithLitvis from "./render-post-enhancers/litvis";
+
+import { Message, VFile } from "vfile";
 import { removeFileProtocol } from "./utility";
 
 const extensionDirectoryPath = utility.extensionDirectoryPath;
@@ -126,6 +135,8 @@ let MODIFY_SOURCE: (
   filePath: string,
 ) => Promise<string> = null;
 
+let UPDATE_LINTING_REPORT: (vFiles: Array<VFile<{}>>) => void = null;
+
 /**
  * The markdown engine that can be used to parse markdown and export files
  */
@@ -164,6 +175,16 @@ export class MarkdownEngine {
     MODIFY_SOURCE = cb;
   }
 
+  public static async updateLintingReport(vFiles: Array<VFile<{}>>) {
+    if (UPDATE_LINTING_REPORT) {
+      await UPDATE_LINTING_REPORT(vFiles);
+    }
+  }
+
+  public static onUpdateLintingReport(cb: (vFiles: Array<VFile<{}>>) => void) {
+    UPDATE_LINTING_REPORT = cb;
+  }
+
   /**
    * markdown file path
    */
@@ -185,6 +206,8 @@ export class MarkdownEngine {
 
   // caches
   private graphsCache: { [key: string]: string } = {};
+
+  private litvisEnhancerCache: LitvisEnhancerCache;
 
   // code chunks
   private codeChunksData: { [key: string]: CodeChunkData } = {};
@@ -274,8 +297,12 @@ export class MarkdownEngine {
     useMarkdownItCodeFences(this.md, this.config);
     useMarkdownItCriticMarkup(this.md, this.config);
     useMarkdownItEmoji(this.md, this.config);
+    useMarkdownItLitvisNarrativeSchemaLabel(this.md, this.config);
+    useMarkdownItLitvisTripleHatReference(this.md, this.config);
     useMarkdownItMath(this.md, this.config);
     useMarkdownItWikilink(this.md, this.config);
+
+    this.clearCaches();
   }
 
   /**
@@ -2359,10 +2386,11 @@ sidebarTOCBtn.addEventListener('click', function(event) {
   /**
    * clearCaches will clear filesCache, codeChunksData, graphsCache
    */
-  public clearCaches() {
+  public async clearCaches() {
     this.filesCache = {};
     this.codeChunksData = {};
     this.graphsCache = {};
+    this.litvisEnhancerCache = await initLitvisEnhancerCache();
   }
 
   private frontMatterToTable(arg) {
@@ -2788,6 +2816,13 @@ sidebarTOCBtn.addEventListener('click', function(event) {
       $,
       this.config.mathRenderingOption,
       this.config.mathBlockDelimiters,
+    );
+    await enhanceWithLitvis(
+      $,
+      inputString,
+      this.filePath,
+      this.litvisEnhancerCache,
+      MarkdownEngine.updateLintingReport,
     );
     await enhanceWithFencedDiagrams(
       $,

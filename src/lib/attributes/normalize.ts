@@ -1,4 +1,4 @@
-import * as snakeCase from "lodash/snakeCase";
+import { snakeCase } from "lodash";
 import { Attributes } from ".";
 
 /**
