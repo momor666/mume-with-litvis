@@ -1,6 +1,3 @@
-import * as whitespace from "is-whitespace-character";
-import * as _ from "lodash";
-
 import {
   deriveType,
   END,

@@ -1,7 +1,5 @@
 import * as _ from "lodash";
 import * as visit from "unist-util-visit";
-import { parseBlockInfo } from "../../block-info/index";
-import { extractAttributeDerivatives } from "../attribute-derivatives";
 import { LitvisDocument } from "../document";
 import {
   ComposedNarrativeSchema,

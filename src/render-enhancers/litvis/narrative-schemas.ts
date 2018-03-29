@@ -1,8 +1,4 @@
-import * as cheerio from "cheerio";
 import * as _ from "lodash";
-import * as hash from "object-hash";
-import * as toVFile from "to-vfile";
-import * as report from "vfile-reporter";
 
 import { BlockInfo } from "../../lib/block-info/index";
 import { LitvisNarrative } from "../../lib/litvis/narrative";

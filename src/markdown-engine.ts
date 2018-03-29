@@ -47,9 +47,8 @@ import enhanceWithLitvis, {
 import enhanceWithResolvedImagePaths from "./render-enhancers/resolved-image-paths";
 
 import { parseAttributes, stringifyAttributes } from "./lib/attributes";
-import postEnhanceWithLitvis from "./render-post-enhancers/litvis";
 
-import { Message, VFile } from "vfile";
+import { VFile } from "vfile";
 import { removeFileProtocol } from "./utility";
 
 const extensionDirectoryPath = utility.extensionDirectoryPath;

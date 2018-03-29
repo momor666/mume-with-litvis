@@ -1,27 +1,13 @@
 import * as _ from "lodash";
-// import * as html from "rehype-stringify";
-// import * as remark2rehype from "remark-rehype";
 import * as unified from "unified";
 import * as select from "unist-util-select";
-import * as visit from "unist-util-visit";
-import { LitvisNarrative } from ".";
-import { CodeBlockWithFile, ProcessedLitvisContext } from "..";
-import { AttributeDerivatives } from "../attribute-derivatives";
-import { Cache } from "../cache";
-import {
-  ensureEnvironment,
-  EnvironmentStatus,
-  ProgramResult,
-  runProgram,
-} from "../elm";
 
+import { LitvisNarrative } from ".";
 import { LabelType } from "../narrative-schema";
 import {
-  compileNarrativeSchemaLabel,
   extractNarrativeSchemaLabelDerivatives,
   extractNarrativeSchemaLabelHtml,
 } from "../narrative-schema-label";
-import findNarrativeSchemaLabel from "../narrative-schema-label/find";
 
 export default async (narrative: LitvisNarrative): Promise<void> => {
   const lastFile = _.last(narrative.files);

@@ -1,16 +1,9 @@
-import * as _ from "lodash";
 import { Text } from "unist";
 import { NodeWithPosition } from "vfile";
 import { AttributeDerivatives, OutputFormat } from "./attribute-derivatives";
 import { Cache } from "./cache";
 import { LitvisDocument } from "./document";
-import {
-  ensureEnvironment,
-  EnvironmentStatus,
-  ProgramResult,
-  ProgramResultStatus,
-  runProgram,
-} from "./elm";
+import { ProgramResultStatus } from "./elm";
 import {
   extractComposedNarrativeSchema,
   extractElmEnvironmentSpec,

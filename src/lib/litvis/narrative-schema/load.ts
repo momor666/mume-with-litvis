@@ -4,12 +4,16 @@ import { read as readVFile } from "to-vfile";
 import * as vfile from "vfile";
 import * as yaml from "yamljs";
 
+// using ts-ignore because of https://github.com/Microsoft/TypeScript/issues/9944
+
+// @ts-ignore
 import { LitvisDocument, Node, VFileBase } from "../document";
 import {
   ComposedNarrativeSchema,
   CssWithOrigin,
   LabelWithOrigin,
   NarrativeSchema,
+  // @ts-ignore
   NarrativeSchemaData,
   RuleWithOrigin,
 } from "./types";

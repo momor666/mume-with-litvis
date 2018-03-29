@@ -1,8 +1,6 @@
 import { safeLoad } from "js-yaml";
 import * as _ from "lodash";
 import { LitvisDocument } from ".";
-import { parseBlockInfo } from "../../block-info/index";
-import { extractAttributeDerivatives } from "../attribute-derivatives";
 
 function visitFrontmatter(ast, vFile: LitvisDocument) {
   const frontmatterNode = ast.children[0];

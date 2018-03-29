@@ -2,7 +2,7 @@ import * as frontmatter from "remark-frontmatter";
 import * as remarkParse from "remark-parse";
 import * as unified from "unified";
 import { Node } from "unist";
-import { VFile, VFileBase, VFileMessage } from "vfile";
+import { VFile } from "vfile";
 import { findNarrativeSchemaLabel } from "../narrative-schema-label";
 import extractAttributeDerivatives from "./extract-attribute-derivatives";
 import extractOutputItems from "./extract-output-items";

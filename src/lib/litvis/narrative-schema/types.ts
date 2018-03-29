@@ -1,7 +1,5 @@
-import { VFile, VFileBase, VFileMessage } from "vfile";
+import { VFile } from "vfile";
 import { LitvisDocument } from "../document";
-
-export { VFile } from "vfile";
 
 export enum LabelType {
   SINGLE = "single",

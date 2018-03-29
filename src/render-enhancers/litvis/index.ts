@@ -1,14 +1,9 @@
 import * as LRU from "lru-cache";
-import * as hash from "object-hash";
 import * as toVFile from "to-vfile";
-import * as report from "vfile-reporter";
 
-import { Message, VFile, VFileBase } from "vfile";
-import { BlockInfo } from "../../lib/block-info/index";
+import { VFile } from "vfile";
 import { loadAndProcessLitvisNarrative } from "../../lib/litvis";
 import { initCache as initLitvisCache } from "../../lib/litvis/cache";
-import parseElmStringRepresentation from "../../lib/litvis/elm/parse-elm-string-representation";
-import { escapeString, readFile, writeFile } from "../../utility";
 import enhanceWithLitvisLiterateElm from "./literate-elm";
 import enhanceWithLitvisNarrativeSchemas from "./narrative-schemas";
 import { LitvisEnhancerCache } from "./types";

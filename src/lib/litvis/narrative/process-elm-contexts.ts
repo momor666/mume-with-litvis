@@ -2,7 +2,6 @@ import * as _ from "lodash";
 import * as visit from "unist-util-visit";
 import { LitvisNarrative } from ".";
 import { CodeBlockWithFile, ProcessedLitvisContext } from "..";
-import { AttributeDerivatives } from "../attribute-derivatives";
 import { Cache } from "../cache";
 import {
   ensureEnvironment,

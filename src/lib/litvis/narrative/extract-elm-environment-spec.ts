@@ -2,7 +2,6 @@ import { statSync } from "fs";
 import * as _ from "lodash";
 import { resolve } from "path";
 import { LitvisNarrative } from ".";
-import { EnvironmentSpec } from "../elm";
 
 export default async (narrative: LitvisNarrative): Promise<void> => {
   // resolve litvisElmDependencies and litvisElmSourceDirectories

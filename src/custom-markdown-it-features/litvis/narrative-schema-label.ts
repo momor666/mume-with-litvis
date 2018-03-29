@@ -1,6 +1,5 @@
 import { MarkdownIt } from "markdown-it";
 import { parseBlockInfo } from "../../lib/block-info/index";
-import { LabelType } from "../../lib/litvis/narrative-schema";
 import { deriveType } from "../../lib/litvis/narrative-schema/label";
 import { MarkdownEngineConfig } from "../../markdown-engine-config";
 import { escapeString } from "../../utility";

@@ -2,8 +2,6 @@ import { remove, writeFile } from "fs-extra";
 import * as _ from "lodash";
 import * as hash from "object-hash";
 import { resolve } from "path";
-import { Node, Point, Position } from "unist";
-import { NodeWithPosition, VFile, VFileMessage } from "vfile";
 import { CodeBlockWithFile, OutputExpressionWithFile } from "..";
 import { Environment } from "./environment";
 import { runElm } from "./tools";

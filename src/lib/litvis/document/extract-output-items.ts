@@ -1,11 +1,9 @@
 import * as _ from "lodash";
 import * as visit from "unist-util-visit";
 import { LitvisDocument } from ".";
-import { parseBlockInfo } from "../../block-info/index";
 import {
   AttributeDerivatives,
   BlockOutputFormat,
-  extractAttributeDerivatives,
   resolveExpressions,
 } from "../attribute-derivatives";
 

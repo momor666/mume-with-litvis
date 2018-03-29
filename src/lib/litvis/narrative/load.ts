@@ -84,7 +84,6 @@ export default async (
         }
       }
     } while (currentFilePath);
-    const lastFile = _.last(files);
   } catch (e) {
     // FIXME: add a single vfile to the list of returned files
     // if the first file does not exist

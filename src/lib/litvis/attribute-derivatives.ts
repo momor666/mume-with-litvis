@@ -1,5 +1,4 @@
 import produce from "immer";
-import * as _ from "lodash";
 
 import { Attributes } from "../attributes/index";
 import { findIntroducedSymbols } from "./elm";

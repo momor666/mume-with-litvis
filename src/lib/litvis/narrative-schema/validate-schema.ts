@@ -1,6 +1,6 @@
-import { Validator, ValidatorResult } from "jsonschema";
+import * as jsonschema from "jsonschema";
 
-const v = new Validator();
+const v = new jsonschema.Validator();
 
 export default (json) => v.validate(json, schema);
 

@@ -1,8 +1,3 @@
-import { readdir, readFile, remove, stat } from "fs-extra";
-import produce from "immer";
-import { relative, resolve } from "path";
-import { execFile, writeFile } from "../../../utility";
-
 export interface ElmSymbol {
   name: string;
   type?: string;

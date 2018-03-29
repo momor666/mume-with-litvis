@@ -18,7 +18,7 @@ import {
 } from "../../lib/litvis/attribute-derivatives";
 import parseElmStringRepresentation from "../../lib/litvis/elm/parse-elm-string-representation";
 import { LitvisNarrative } from "../../lib/litvis/narrative";
-import { escapeString, readFile, writeFile } from "../../utility";
+import { escapeString } from "../../utility";
 import { LitvisEnhancerCache } from "./types";
 
 export default async function enhance(
@@ -139,7 +139,6 @@ export default async function enhance(
   );
 
   // walk through all litvis output items and render them
-  const asyncFunctions = [];
   $('[data-role="litvisOutputItem"]').each((i, el) => {
     const $el = $(el);
     const contextName = $el.data("contextName");
@@ -243,7 +242,6 @@ export default async function enhance(
       $result.data("normalizedInfo", JSON.stringify(resultNormalizedInfo));
       $el.replaceWith($result);
     } catch (e) {
-      const $fadedRender = $("<span/>");
       const $error = $("<span/>").attr(
         "style",
         "background: rgba(255,200,200,0.1); min-height: 1em; min-width: 1em; display: inline-block;",
@@ -296,12 +294,6 @@ export default async function enhance(
   if (arrayOf$StyleTags.length) {
     $.root().prepend("", ...arrayOf$StyleTags);
   }
-}
-
-function renderError(message, doNotEscape = false) {
-  return `<span style="color: red">${
-    doNotEscape ? message : escapeString(message)
-  }</span>`;
 }
 
 function generate$output(arrayOf$outputItems) {

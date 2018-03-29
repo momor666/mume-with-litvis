@@ -24,7 +24,6 @@ export default (
       "data-narrativeSchemaLabelAttributes",
       JSON.stringify(labelAttributes),
     );
-  const $html = $(rawRenderedTemplate);
   const rawHtml = $.html();
 
   const positionOfFakeChildren = rawHtml.indexOf(FAKE_CHILDREN_CONTENTS);
