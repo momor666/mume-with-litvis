@@ -1,12 +1,15 @@
 // import * as Baby from "babyparse"
 import * as Baby from "babyparse";
+import {
+  parseBlockAttributes,
+  stringifyBlockAttributes,
+} from "block-attributes";
 import * as fs from "fs";
 import * as less from "less";
 import * as path from "path";
 import * as request from "request";
 import * as temp from "temp";
 import * as uslug from "uslug";
-import { parseAttributes, stringifyAttributes } from "./lib/attributes";
 import computeChecksum from "./lib/compute-checksum";
 import * as utility from "./utility";
 
@@ -386,7 +389,7 @@ export async function transformMarkdown(
           heading = heading.replace(optMatch[0], "");
 
           try {
-            const opt = parseAttributes(optMatch[0]);
+            const opt = parseBlockAttributes(optMatch[0]);
 
             (classes = opt["class"]),
               (id = opt["id"]),
@@ -496,7 +499,7 @@ export async function transformMarkdown(
 
             let options = {};
             if (optionsMatch && optionsMatch[2]) {
-              options = parseAttributes(optionsMatch[2]);
+              options = parseBlockAttributes(optionsMatch[2]);
             }
             options["lineNo"] = lineNo;
 
@@ -623,7 +626,7 @@ export async function transformMarkdown(
           if (rightParen > 0) {
             configStr = line.substring(leftParen + 1, rightParen);
             try {
-              config = parseAttributes(configStr);
+              config = parseBlockAttributes(configStr);
             } catch (error) {
               // null
             }
@@ -722,7 +725,7 @@ export async function transformMarkdown(
             codeChunkOffset++;
           }
 
-          const output2 = `\`\`\`text ${stringifyAttributes(
+          const output2 = `\`\`\`text ${stringifyBlockAttributes(
             config,
           )}  \n\`\`\`  `;
           // return helper(end+1, lineNo+1, outputString+output+'\n')
@@ -743,7 +746,7 @@ export async function transformMarkdown(
               const fileExtension = extname.slice(1, extname.length);
               output = `\`\`\`${config["as"] ||
                 fileExtensionToLanguageMap[fileExtension] ||
-                fileExtension} ${stringifyAttributes(
+                fileExtension} ${stringifyBlockAttributes(
                 config,
               )}  \n${fileContent}\n\`\`\`  `;
             } else if (config && config["cmd"]) {
@@ -759,7 +762,7 @@ export async function transformMarkdown(
               const fileExtension = extname.slice(1, extname.length);
               output = `\`\`\`${config["as"] ||
                 fileExtensionToLanguageMap[fileExtension] ||
-                fileExtension} ${stringifyAttributes(
+                fileExtension} ${stringifyBlockAttributes(
                 config,
               )}  \n${fileContent}\n\`\`\`  `;
             } else if ([".md", ".markdown", ".mmark"].indexOf(extname) >= 0) {
@@ -859,19 +862,19 @@ export async function transformMarkdown(
               extname === ".viz"
             ) {
               // graphviz
-              output = `\`\`\`dot ${stringifyAttributes(
+              output = `\`\`\`dot ${stringifyBlockAttributes(
                 config,
                 true,
               )}\n${fileContent}\n\`\`\`  `;
             } else if (extname === ".mermaid") {
               // mermaid
-              output = `\`\`\`mermaid ${stringifyAttributes(
+              output = `\`\`\`mermaid ${stringifyBlockAttributes(
                 config,
                 true,
               )}\n${fileContent}\n\`\`\`  `;
             } else if (extname === ".plantuml" || extname === ".puml") {
               // PlantUML
-              output = `\`\`\`puml ${stringifyAttributes(
+              output = `\`\`\`puml ${stringifyBlockAttributes(
                 config,
                 true,
               )}\n' @mume_file_directory_path:${path.dirname(
@@ -901,7 +904,7 @@ export async function transformMarkdown(
               output = `\`\`\`${aS ||
                 fileExtensionToLanguageMap[fileExtension] ||
                 fileExtension} ${
-                config ? stringifyAttributes(config) : ""
+                config ? stringifyBlockAttributes(config) : ""
               }  \n${fileContent}\n\`\`\`  `;
             }
 

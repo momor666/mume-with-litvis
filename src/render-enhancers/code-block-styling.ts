@@ -1,6 +1,6 @@
+import { BlockInfo } from "block-info";
 import { resolve } from "path";
 import { scopeForLanguageName } from "../extension-helper";
-import { BlockInfo } from "../lib/block-info";
 import { escapeString, extensionDirectoryPath } from "../utility";
 
 let Prism;

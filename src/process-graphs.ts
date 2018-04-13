@@ -1,9 +1,9 @@
+import { parseBlockAttributes } from "block-attributes";
 import * as cheerio from "cheerio";
 import * as path from "path";
 
 import { compileLaTeX } from "./code-chunk";
 import { CodeChunkData } from "./code-chunk-data";
-import { parseAttributes } from "./lib/attributes";
 import computeChecksum from "./lib/compute-checksum";
 import { svgElementToPNGFile } from "./magick";
 import * as plantumlAPI from "./puml";
@@ -71,7 +71,7 @@ export async function processGraphs(
           const optionsMatch = trimmedLine.match(/\{(.+)\}$/);
           if (optionsMatch) {
             try {
-              options = parseAttributes(optionsMatch[0]);
+              options = parseBlockAttributes(optionsMatch[0]);
               optionsStr = optionsMatch[1];
             } catch (error) {
               options = {};

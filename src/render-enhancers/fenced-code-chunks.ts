@@ -1,7 +1,7 @@
 // tslint:disable:ban-types no-var-requires
+import { BlockInfo } from "block-info";
 import { run } from "../code-chunk";
 import { CodeChunkData, CodeChunksData } from "../code-chunk-data";
-import { BlockInfo } from "../lib/block-info";
 import { MarkdownEngineRenderOption } from "../markdown-engine";
 import { toc } from "../toc";
 
