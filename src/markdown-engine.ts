@@ -46,9 +46,9 @@ import enhanceWithLitvis, {
 } from "./render-enhancers/litvis/index";
 import enhanceWithResolvedImagePaths from "./render-enhancers/resolved-image-paths";
 
-import { parseAttributes, stringifyAttributes } from "./lib/attributes";
-
 import { VFile } from "vfile";
+import { parseAttributes, stringifyAttributes } from "./lib/attributes";
+import { normalizeBlockInfo, parseBlockInfo } from "./lib/block-info";
 import { removeFileProtocol } from "./utility";
 
 const extensionDirectoryPath = utility.extensionDirectoryPath;
@@ -329,12 +329,15 @@ export class MarkdownEngine {
     this.enableTypographer = this.config.enableTypographer;
 
     // protocal whitelist
-    const protocolsWhiteList = this.config.protocolsWhiteList
+    const protocolsWhiteList = (
+      this.config.protocolsWhiteList ||
+      defaultMarkdownEngineConfig.protocolsWhiteList
+    )
       .split(",")
-      .map((x) => x.trim()) || ["http", "https", "atom", "file"];
+      .map((x) => x.trim());
     this.protocolsWhiteListRegExp = new RegExp(
-      "^(" + protocolsWhiteList.join("|") + ")://",
-    ); // eg /^(http|https|atom|file)\:\/\//
+      "^(" + protocolsWhiteList.join("|") + ")",
+    ); // eg /^(http:\/\/|https:\/\/|atom:\/\/|file:\/\/|mailto:|tel:)/
   }
 
   public updateConfiguration(config) {
@@ -1359,6 +1362,7 @@ for (var i = 0; i < flowcharts.length; i++) {
     let sidebarTOCScript = "";
     let sidebarTOCBtn = "";
     if (
+      this.config.enableScriptExecution &&
       !yamlConfig["isPresentationMode"] &&
       !options.isForPrint &&
       (!("html" in yamlConfig) ||
@@ -1390,20 +1394,22 @@ sidebarTOCBtn.addEventListener('click', function(event) {
     }
 
     // task list script
-    // has to use `var` instead of `let` because `phantomjs` might cause issue.
-    const taskListScript = `<script>
-(function bindTaskListEvent() {
-  var taskListItemCheckboxes = document.body.getElementsByClassName('task-list-item-checkbox')
-  for (var i = 0; i < taskListItemCheckboxes.length; i++) {
-    var checkbox = taskListItemCheckboxes[i]
-    var li = checkbox.parentElement
-    if (li.tagName !== 'LI') li = li.parentElement
-    if (li.tagName === 'LI') {
-      li.classList.add('task-list-item')
+    if (html.indexOf("task-list-item-checkbox") >= 0) {
+      const $ = cheerio.load("<div>" + html + "</div>");
+      $(".task-list-item-checkbox").each(
+        (index: number, elem: CheerioElement) => {
+          const $elem = $(elem);
+          let $li = $elem.parent();
+          if (!$li[0].name.match(/^li$/i)) {
+            $li = $li.parent();
+          }
+          if ($li[0].name.match(/^li$/i)) {
+            $li.addClass("task-list-item");
+          }
+        },
+      );
+      html = $.html();
     }
-  }
-}())    
-</script>`;
 
     // process styles
     // move @import ''; to the very start.
@@ -1456,7 +1462,6 @@ sidebarTOCBtn.addEventListener('click', function(event) {
     ${vegaInitScript}
     ${flowchartInitScript}
     ${sequenceDiagramInitScript}
-    ${taskListScript}
     ${sidebarTOCScript}
   </html>
     `;
@@ -2629,12 +2634,8 @@ sidebarTOCBtn.addEventListener('click', function(event) {
       .filter((arg) => arg.length);
 
     /*
-    convert code block
-    ```python {id:"haha"}
-    to
-    ```{.python data-code-block:"{id: haha}"}
+      convert pandoc code block to markdown-it code block
     */
-
     let outputString = "";
     const lines = text.split("\n");
     let i = 0;
@@ -2647,19 +2648,23 @@ sidebarTOCBtn.addEventListener('click', function(event) {
         inCodeBlock = !inCodeBlock;
 
         if (inCodeBlock) {
-          let lang = utility.escapeString(line.slice(match[0].length)).trim();
-          if (!lang) {
-            lang = "text";
+          let info = line.slice(match[0].length).trim();
+          if (!info) {
+            info = "text";
           }
-
-          // TODO: doesn't work well with code chunk. Fix in the future.
-          // let cmatch = null
-          // if (cmatch = lang.match(/^\{\s*\.([\w\d]+)/)) { // ``` {.java}
-          // lang = cmatch[1] + ' ' + lang
-          // }
+          const parsedInfo = parseBlockInfo(info);
+          const normalizedInfo = normalizeBlockInfo(parsedInfo);
 
           codeBlockSpacesAhead = match[1].length;
-          outputString += `${match[1]}\`\`\`{.mpe-code data-lang="${lang}"}\n`;
+          outputString += `${
+            match[1]
+          }\`\`\`{.text data-role="codeBlock" data-info="${utility.escapeString(
+            info,
+          )}" data-parsed-info="${utility.escapeString(
+            JSON.stringify(parsedInfo),
+          )}" data-normalized-info="${utility.escapeString(
+            JSON.stringify(normalizedInfo),
+          )}"}\n`;
         } else if (match[1].length === codeBlockSpacesAhead) {
           outputString += `${match[1]}\`\`\`\n`;
         } else {
