@@ -70,8 +70,8 @@ export async function runProgram(program: Program): Promise<ProgramResult> {
     text: `-------- literate-elm output
 ${outputSymbolName} : String
 ${outputSymbolName} =
-    encode 0 <|
-        object
+    Json.Encode.encode 0 <|
+        Json.Encode.object
             [`,
   });
   _.forEach(orderedOutputExpressionTexts, (text, i) => {
@@ -82,7 +82,7 @@ ${outputSymbolName} =
         ${i > 0 ? "," : " "} ("${text.replace(
         /"/g,
         '\\"',
-      )}", string <| toString <| ${text})`,
+      )}", Json.Encode.string <| toString <| ${text})`,
       offsetY: 2,
     });
   });
@@ -96,12 +96,12 @@ ${outputSymbolName} =
 
   // only import Json.Encode if not done so in user code
   const containsJsonEncodeImport = _.some(codeChunks, (codeChunk) =>
-    `\n${codeChunk.text}`.match(/\n\s*import Json\.Encode exposing/),
+    `\n${codeChunk.text}`.match(/\n\s*import Json\.Encode/),
   );
   if (!containsJsonEncodeImport) {
     codeChunks.unshift({
       type: CodeChunkType.AUXILIARY,
-      text: `import Json.Encode exposing (..)`,
+      text: `import Json.Encode`,
     });
   }
 
@@ -208,7 +208,9 @@ ${outputSymbolName} =
               );
             });
           } else {
-            throw new Error(elmError);
+            throw new Error(
+              elmError.overview || elmError.details || JSON.stringify(elmError),
+            );
           }
         } catch (e) {
           if (!e.location /* not a VFileMessage */) {
