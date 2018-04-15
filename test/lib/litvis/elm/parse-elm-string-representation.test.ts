@@ -1,4 +1,4 @@
-import parseStringRepresentation from "../../../../src/lib/litvis/elm/parse-elm-string-representation";
+import { parseStringRepresentation } from "../../../../src/lib/litvis/elm/elm-string-representation";
 
 const testCasesForParseBlockInfo: Array<{
   input: string | string[];

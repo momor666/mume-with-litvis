@@ -3,6 +3,8 @@ import * as _ from "lodash";
 import * as hash from "object-hash";
 import { resolve } from "path";
 import { CodeBlockWithFile, OutputExpressionWithFile } from "..";
+import { OutputFormat } from "../attribute-derivatives";
+import { getElmValue } from "./elm-string-representation";
 import { Environment } from "./environment";
 import { runElm } from "./tools";
 
@@ -232,21 +234,24 @@ ${outputSymbolName} =
       (outputExpression) => {
         const stringRepresentation =
           evaluatedOutputExpressionMap[outputExpression.data.text];
-        // let value;
-        // try {
-        //   value = parseElmStringRepresentation(stringRepresentation);
-        // } catch (e) {
-        //   outputExpression.data.file.message(
-        //     `‘${outputExpression.data.text}’: ${e.message}`,
-        //     outputExpression,
-        //   );
-        // }
+        let value;
+        if (outputExpression.data.outputFormat !== OutputFormat.R) {
+          try {
+            value = getElmValue(stringRepresentation);
+          } catch (e) {
+            outputExpression.data.file.message(
+              `‘${outputExpression.data.text}’: ${e.message}`,
+              outputExpression,
+            );
+            value = e;
+          }
+        }
         return {
           ...outputExpression,
           data: {
             ...outputExpression.data,
             stringRepresentation,
-            // value,
+            value,
           },
         };
       },

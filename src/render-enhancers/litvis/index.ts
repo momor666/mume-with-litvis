@@ -13,7 +13,6 @@ export * from "./types";
 export async function initLitvisEnhancerCache(): Promise<LitvisEnhancerCache> {
   return {
     litvisCache: initLitvisCache(),
-    elmValueByStringRepresentation: LRU(100),
     successfulRenders: LRU(50),
   };
 }

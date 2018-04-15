@@ -1,5 +1,40 @@
+import * as LRU from "lru-cache";
+
+const cache = LRU(100);
+
+/**
+ * Returns Elm's string representation as a JS value.
+ *
+ * Unlike parseElmStringRepresentation(), the function uses LRU cache
+ * before attempting to parse value.
+ *
+ * Examples:
+ * * '' -> null
+ * * '42' -> 42
+ * * '"42"' -> "42" (string)
+ * * '{a = 1, b = 2}' -> {a: 1, b: 2} (json)
+ * * '{0 = "a", 1 = 42}' -> ["a", 42] (array)
+ */
+export const getElmValue = (stringRepresentation: string) => {
+  let valueInCache = cache.get(stringRepresentation);
+  if (typeof valueInCache === "undefined") {
+    try {
+      valueInCache = parseStringRepresentation(stringRepresentation);
+    } catch (e) {
+      valueInCache = e;
+    }
+    cache.set(stringRepresentation, valueInCache);
+  }
+  if (valueInCache instanceof Error) {
+    throw valueInCache;
+  }
+  return valueInCache;
+};
+
 /**
  * Parses Elm's string representation into a corresponding JS value.
+ *
+ * It is recommended to use getElmValue() instead as it is using cache.
  *
  * Examples:
  * * '' -> null
@@ -10,7 +45,7 @@
  *
  * Array detection and conversion works recursively.
  */
-export default (input: string): any => {
+export const parseStringRepresentation = (input: string): any => {
   if (!input.length) {
     return null;
   }
@@ -21,7 +56,17 @@ export default (input: string): any => {
       .replace(/ = False/g, " = false")
       .replace(/([$a-zA-Z_0-9]+)\s=\s/g, '"$1": ');
   }
-  return recursivelyConvertApplicableObjectsToArrays(JSON.parse(patchedInput));
+  try {
+    return recursivelyConvertApplicableObjectsToArrays(
+      JSON.parse(patchedInput),
+    );
+  } catch (e) {
+    throw new Error(
+      `Could not parse "${
+        input.length <= 20 ? input : `${input.substring(0, 15)}...`
+      }" as JSON`,
+    );
+  }
 };
 
 /**
