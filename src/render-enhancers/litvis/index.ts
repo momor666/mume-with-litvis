@@ -7,6 +7,7 @@ import { initCache as initLitvisCache } from "../../lib/litvis/cache";
 import enhanceWithLitvisLiterateElm from "./literate-elm";
 import enhanceWithLitvisNarrativeSchemas from "./narrative-schemas";
 import { LitvisEnhancerCache } from "./types";
+import enhanceWithLitvisVegaBlockKeywords from "./vega-block-keywords";
 
 export * from "./types";
 
@@ -51,4 +52,5 @@ export default async function enhance(
 
   await enhanceWithLitvisNarrativeSchemas($, processedNarrative, cache);
   await enhanceWithLitvisLiterateElm($, processedNarrative, cache);
+  await enhanceWithLitvisVegaBlockKeywords($, processedNarrative, cache);
 }
