@@ -153,11 +153,20 @@ export default async (
       ranContextNames,
       (contextName, index) => {
         const literateElmProgramResult = literateElmProgramResults[index];
+        const debugLog = literateElmProgramResult.debugLog;
+        if (debugLog) {
+          lastFile.info(
+            `Debug.log results in context "${contextName}":\n${debugLog}`,
+            null,
+            "litvis:debug-log",
+          );
+        }
         return {
           name: contextName,
           status: literateElmProgramResult.status,
           evaluatedOutputExpressions:
             literateElmProgramResult.evaluatedOutputExpressions,
+          debugLog,
         };
       },
     );

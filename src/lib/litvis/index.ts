@@ -45,6 +45,7 @@ export interface ProcessedLitvisContext {
   name: string;
   status: ProcessedLitvisContextStatus;
   evaluatedOutputExpressions: OutputExpression[];
+  debugLog: string;
 }
 
 export async function loadAndProcessLitvisNarrative(

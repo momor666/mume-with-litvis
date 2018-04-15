@@ -23,6 +23,7 @@ export interface ProgramResult {
   program: Program;
   status: ProgramResultStatus;
   evaluatedOutputExpressions: OutputExpressionWithFile[];
+  debugLog: string;
 }
 
 enum CodeChunkType {
@@ -228,6 +229,11 @@ ${outputSymbolName} =
     // only parse the last non-empty row in stdout not to include Debug.log output
     const outputRows = (runElmStdout || "").split("\n");
     const output = outputRows[outputRows.length - 2];
+    const debugLog = outputRows
+      .slice(0, outputRows.length - 2)
+      .join("\n")
+      .replace(/This is output from elm to the console.: /g, "")
+      .trim();
     const evaluatedOutputExpressionMap = JSON.parse(output || "{}");
 
     const evaluatedOutputExpressions = program.outputExpressions.map(
@@ -260,6 +266,7 @@ ${outputSymbolName} =
       program,
       status: ProgramResultStatus.SUCCESS,
       evaluatedOutputExpressions,
+      debugLog,
     };
   } catch (e) {
     if (!e.location /* not a VFileMessage */) {
@@ -275,6 +282,7 @@ ${outputSymbolName} =
       program,
       status: ProgramResultStatus.ERROR,
       evaluatedOutputExpressions: [],
+      debugLog: "",
     };
   } finally {
     await remove(modulePath);
