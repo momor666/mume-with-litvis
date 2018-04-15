@@ -27,6 +27,9 @@ export default async function enhance(
     }
 
     const info: BlockInfo = $container.data("parsedInfo");
+    if (!info) {
+      return;
+    }
     const normalizedInfo: BlockInfo = $container.data("normalizedInfo");
     if (
       normalizedInfo.language !== "vega" &&
