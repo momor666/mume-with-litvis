@@ -46,6 +46,9 @@ export const getElmValue = (stringRepresentation: string) => {
  * Array detection and conversion works recursively.
  */
 export const parseStringRepresentation = (input: string): any => {
+  if (typeof input !== 'string') {
+    return undefined;
+  }
   if (!input.length) {
     return null;
   }
