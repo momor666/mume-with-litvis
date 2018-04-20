@@ -44,6 +44,7 @@ import enhanceWithLitvis, {
   LitvisEnhancerCache,
 } from "./render-enhancers/litvis/index";
 import enhanceWithResolvedImagePaths from "./render-enhancers/resolved-image-paths";
+import postEnhanceWithLitvis from './render-post-enhancers/litvis';
 
 import { VFile } from "vfile";
 import { parseAttributes, stringifyAttributes } from "./lib/attributes";
@@ -2853,7 +2854,9 @@ sidebarTOCBtn.addEventListener('click', function(event) {
       // extend table
       await enhanceWithExtendedTableSyntax($);
     }
-    html = frontMatterTable + $.html();
+
+    const combinedPostEnhance = postEnhanceWithLitvis;
+    html = frontMatterTable + combinedPostEnhance($.html());
 
     /**
      * check slides
