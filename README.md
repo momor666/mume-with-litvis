@@ -1,5 +1,7 @@
 # Mume with litvis
 
+[![Build Status](https://travis-ci.org/gicentre/mume-with-litvis.svg?branch=master)](https://travis-ci.org/gicentre/mume-with-litvis)
+
 This project is a fork of [`mume`](https://github.com/shd101wyy/mume), which is the cor library behind for [Markdown Preview Enhanced for Atom](https://atom.io/packages/markdown-preview-enhanced) and [Markdown Preview Enhanced for VSCode](https://marketplace.visualstudio.com/items?itemName=shd101wyy.markdown-preview-enhanced#review-details).
 Most of the code in this fork is inherited from the upstream repository and is thus courtesy of [@shd101wyy](https://github.com/shd101wyy) and other [contributors](https://github.com/shd101wyy/mume/graphs/contributors) to `mume`.
 
