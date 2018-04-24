@@ -26,8 +26,8 @@
   "repository": "https://github.com/gicentre/mume-with-litvis",
   "dependencies": {
     "babyparse": "^0.4.6",
-    "block-attributes": "^0.1.2",
-    "block-info": "^0.1.2",
+    "block-attributes": "^0.2.0",
+    "block-info": "^0.2.0",
     "cheerio": "0.15.0",
     "fs-extra": "^5.0.0",
     "gray-matter": "^3.0.7",

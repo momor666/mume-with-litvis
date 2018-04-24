@@ -498,23 +498,11 @@ binary-extensions@^1.0.0:
   version "1.11.0"
   resolved "https://registry.yarnpkg.com/binary-extensions/-/binary-extensions-1.11.0.tgz#46aa1751fb6a2f93ee5e689bb1087d4b14c6c205"
 
-block-attributes@^0.1.2, block-attributes@^0.1.3:
-  version "0.1.3"
-  resolved "https://registry.yarnpkg.com/block-attributes/-/block-attributes-0.1.3.tgz#9c68fe800163572bc21016648f29b88e69cd12bd"
-  dependencies:
-    lodash.snakecase "^4.1.1"
-
 block-attributes@^0.2.0:
   version "0.2.0"
   resolved "https://registry.yarnpkg.com/block-attributes/-/block-attributes-0.2.0.tgz#fdf4b8e06302c1b953a327e73129adce001f785e"
   dependencies:
     lodash.snakecase "^4.1.1"
-
-block-info@^0.1.2:
-  version "0.1.3"
-  resolved "https://registry.yarnpkg.com/block-info/-/block-info-0.1.3.tgz#d40ffde9efc18f8daeabb9847fdc3c0836486663"
-  dependencies:
-    block-attributes "^0.1.3"
 
 block-info@^0.2.0:
   version "0.2.0"
