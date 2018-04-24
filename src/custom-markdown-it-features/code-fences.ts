@@ -3,7 +3,10 @@
  * check https://github.com/jonschlinkert/remarkable/blob/875554aedb84c9dd190de8d0b86c65d2572eadd5/lib/rules.js
  */
 
-import { normalizeBlockInfo, parseBlockInfo } from "block-info";
+import {
+  normalize as normalizeBlockInfo,
+  parse as parseBlockInfo,
+} from "block-info";
 import { MarkdownIt } from "markdown-it";
 import { MarkdownEngineConfig } from "../markdown-engine-config";
 import { escapeString } from "../utility";

@@ -1,4 +1,4 @@
-import { stringifyBlockAttributes } from "block-attributes";
+import { stringify as stringifyBlockAttributes } from "block-attributes";
 import { BlockInfo } from "block-info";
 import { MathRenderingOption } from "../markdown-engine-config";
 import parseMath from "../parse-math";

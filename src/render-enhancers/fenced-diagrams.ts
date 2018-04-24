@@ -1,5 +1,8 @@
 // tslint:disable:ban-types no-var-requires
-import { BlockAttributes, stringifyBlockAttributes } from "block-attributes";
+import {
+  BlockAttributes,
+  stringify as stringifyBlockAttributes,
+} from "block-attributes";
 import { BlockInfo } from "block-info";
 import { resolve } from "path";
 import * as YAML from "yamljs";

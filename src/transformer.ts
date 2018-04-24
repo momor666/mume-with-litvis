@@ -1,8 +1,8 @@
 // import * as Baby from "babyparse"
 import * as Baby from "babyparse";
 import {
-  parseBlockAttributes,
-  stringifyBlockAttributes,
+  parse as parseBlockAttributes,
+  stringify as stringifyBlockAttributes,
 } from "block-attributes";
 import * as fs from "fs";
 import * as less from "less";

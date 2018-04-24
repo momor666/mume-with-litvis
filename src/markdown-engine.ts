@@ -1,10 +1,13 @@
 // tslint:disable no-var-requires member-ordering
 
 import {
-  parseBlockAttributes,
-  stringifyBlockAttributes,
+  parse as parseBlockAttributes,
+  stringify as stringifyBlockAttributes,
 } from "block-attributes";
-import { normalizeBlockInfo, parseBlockInfo } from "block-info";
+import {
+  normalize as normalizeBlockInfo,
+  parse as parseBlockInfo,
+} from "block-info";
 import * as cheerio from "cheerio";
 import { execFile } from "child_process";
 import * as fs from "fs";
@@ -12,6 +15,7 @@ import {
   enhanceWithLitvis,
   initLitvisEnhancerCache,
   LitvisEnhancerCache,
+  postEnhanceWithLitvis,
   useMarkdownItLitvisFeatures,
 } from "litvis-integration-mume";
 import * as path from "path";
@@ -2855,7 +2859,9 @@ sidebarTOCBtn.addEventListener('click', function(event) {
       // extend table
       await enhanceWithExtendedTableSyntax($);
     }
-    html = frontMatterTable + $.html();
+
+    const combinedPostEnhance = postEnhanceWithLitvis;
+    html = frontMatterTable + combinedPostEnhance($.html());
 
     /**
      * check slides

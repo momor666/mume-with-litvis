@@ -1,4 +1,4 @@
-import { parseBlockAttributes } from "block-attributes";
+import { parse as parseBlockAttributes } from "block-attributes";
 import * as cheerio from "cheerio";
 import * as path from "path";
 
