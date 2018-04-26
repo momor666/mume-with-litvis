@@ -1,6 +1,6 @@
 {
   "name": "mume-with-litvis",
-  "version": "0.5.2",
+  "version": "0.5.3",
   "description": "Fork of mume with added http://litvis.org/",
   "main": "out/src/mume.js",
   "typings": "out/src/mume.d.ts",
@@ -33,7 +33,7 @@
     "gray-matter": "^3.0.7",
     "less": "^2.7.2",
     "litvis": "^0.2.2",
-    "litvis-integration-mume": "^0.2.3",
+    "litvis-integration-mume": "^0.2.4",
     "mkdirp": "^0.5.1",
     "qiniu": "=7.1.1",
     "request": "^2.81.0",

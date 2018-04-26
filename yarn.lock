@@ -2559,30 +2559,29 @@ literate-elm@^0.3.0:
     object-hash "^1.3.0"
     sleep-promise "^6.0.0"
 
-literate-elm@^0.3.1:
-  version "0.3.1"
-  resolved "https://registry.yarnpkg.com/literate-elm/-/literate-elm-0.3.1.tgz#22cf481ad6cc660b257b09bd837ceb8c1b9f010e"
+literate-elm@^0.3.2:
+  version "0.3.2"
+  resolved "https://registry.yarnpkg.com/literate-elm/-/literate-elm-0.3.2.tgz#509290a0d0890307a0ba28aed0e90530574248fd"
   dependencies:
     "@kachkaev/run-elm" "^2.3.0"
     elm "^0.18.0"
     elm-string-representation "^1.1.0"
     execa "^0.10.0"
-    find-up "^2.1.0"
     fs-extra "^5.0.0"
     lodash "^4.17.5"
     object-hash "^1.3.0"
     sleep-promise "^6.0.0"
 
-litvis-integration-mume@^0.2.3:
-  version "0.2.3"
-  resolved "https://registry.yarnpkg.com/litvis-integration-mume/-/litvis-integration-mume-0.2.3.tgz#a9ebd6ea931e5db6ab55f2d545f36f4d1ca8f2ff"
+litvis-integration-mume@^0.2.4:
+  version "0.2.4"
+  resolved "https://registry.yarnpkg.com/litvis-integration-mume/-/litvis-integration-mume-0.2.4.tgz#b59f55c907edc20eeecf310a29021e6e99600c0a"
   dependencies:
     block-attributes "^0.2.1"
     block-info "^0.2.1"
     cheerio "0.15.0"
     elm-string-representation "^1.1.0"
     html-entities "^1.2.1"
-    litvis "^0.2.3"
+    litvis "^0.2.4"
     lodash "^4.17.5"
     lru-cache "^4.1.2"
     markdown-it "^8.4.1"
@@ -2616,9 +2615,9 @@ litvis@^0.2.2:
     unist-util-visit "^1.3.0"
     vfile "^2.3.0"
 
-litvis@^0.2.3:
-  version "0.2.3"
-  resolved "https://registry.yarnpkg.com/litvis/-/litvis-0.2.3.tgz#fb8b9b2a442f01de55dbc54da3956b133df1ed02"
+litvis@^0.2.4:
+  version "0.2.4"
+  resolved "https://registry.yarnpkg.com/litvis/-/litvis-0.2.4.tgz#3a8fde7d1cecfebc36d98aaf3b3df85a5ffd1899"
   dependencies:
     block-attributes "^0.2.1"
     block-info "^0.2.1"
@@ -2626,7 +2625,7 @@ litvis@^0.2.3:
     immer "^1.2.1"
     is-whitespace-character "^1.0.2"
     js-yaml "^3.11.0"
-    literate-elm "^0.3.1"
+    literate-elm "^0.3.2"
     lodash "^4.17.5"
     narrative-schema "^0.1.2"
     narrative-schema-label "^0.1.2"
