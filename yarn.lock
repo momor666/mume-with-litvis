@@ -1064,12 +1064,6 @@ ee-first@~1.1.1:
   version "1.1.1"
   resolved "https://registry.yarnpkg.com/ee-first/-/ee-first-1.1.1.tgz#590c61156b0ae2f4f0255732a158b266bc56b21d"
 
-elm-string-representation@^1.0.2:
-  version "1.0.2"
-  resolved "https://registry.yarnpkg.com/elm-string-representation/-/elm-string-representation-1.0.2.tgz#862133c798e78b920b532c722ca0ebc150105950"
-  dependencies:
-    lru-cache "^4.1.2"
-
 elm-string-representation@^1.1.0:
   version "1.1.0"
   resolved "https://registry.yarnpkg.com/elm-string-representation/-/elm-string-representation-1.1.0.tgz#0ebe99d125bd98aeb8ecb1636933c8d90ae5b03f"
@@ -2551,18 +2545,6 @@ linkify-it@^2.0.0:
   dependencies:
     uc.micro "^1.0.1"
 
-literate-elm@^0.2.0:
-  version "0.2.0"
-  resolved "https://registry.yarnpkg.com/literate-elm/-/literate-elm-0.2.0.tgz#2d99d2df861c65ed746bf1310d83a0cccd5ed62d"
-  dependencies:
-    elm-string-representation "^1.0.2"
-    execa "^0.10.0"
-    fs-extra "^5.0.0"
-    lodash "^4.17.5"
-    object-hash "^1.3.0"
-    run-elm "^2.2.0"
-    sleep-promise "^6.0.0"
-
 literate-elm@^0.3.0:
   version "0.3.0"
   resolved "https://registry.yarnpkg.com/literate-elm/-/literate-elm-0.3.0.tgz#d700940b5e7be46d081988658bb36039f885e426"
@@ -2577,47 +2559,39 @@ literate-elm@^0.3.0:
     object-hash "^1.3.0"
     sleep-promise "^6.0.0"
 
-litvis-integration-mume@^0.2.0:
-  version "0.2.0"
-  resolved "https://registry.yarnpkg.com/litvis-integration-mume/-/litvis-integration-mume-0.2.0.tgz#2b688881fc659f273e5e70b86e2d03a39d90e2b1"
+literate-elm@^0.3.1:
+  version "0.3.1"
+  resolved "https://registry.yarnpkg.com/literate-elm/-/literate-elm-0.3.1.tgz#22cf481ad6cc660b257b09bd837ceb8c1b9f010e"
   dependencies:
-    block-attributes "^0.2.0"
-    block-info "^0.2.0"
+    "@kachkaev/run-elm" "^2.3.0"
+    elm "^0.18.0"
+    elm-string-representation "^1.1.0"
+    execa "^0.10.0"
+    find-up "^2.1.0"
+    fs-extra "^5.0.0"
+    lodash "^4.17.5"
+    object-hash "^1.3.0"
+    sleep-promise "^6.0.0"
+
+litvis-integration-mume@^0.2.3:
+  version "0.2.3"
+  resolved "https://registry.yarnpkg.com/litvis-integration-mume/-/litvis-integration-mume-0.2.3.tgz#a9ebd6ea931e5db6ab55f2d545f36f4d1ca8f2ff"
+  dependencies:
+    block-attributes "^0.2.1"
+    block-info "^0.2.1"
     cheerio "0.15.0"
-    elm-string-representation "^1.0.2"
+    elm-string-representation "^1.1.0"
     html-entities "^1.2.1"
-    litvis "^0.2.0"
+    litvis "^0.2.3"
     lodash "^4.17.5"
     lru-cache "^4.1.2"
     markdown-it "^8.4.1"
-    narrative-schema "^0.1.1"
-    narrative-schema-label "^0.1.1"
+    narrative-schema "^0.1.2"
+    narrative-schema-label "^0.1.2"
     object-hash "^1.3.0"
     to-vfile "^2.2.0"
     vfile "^2.3.0"
     yamljs "^0.3.0"
-
-litvis@^0.2.0:
-  version "0.2.0"
-  resolved "https://registry.yarnpkg.com/litvis/-/litvis-0.2.0.tgz#498edd693da95a30b811e3c79fcfbfb805eaadd5"
-  dependencies:
-    block-attributes "^0.2.0"
-    block-info "^0.2.0"
-    fs-extra "^5.0.0"
-    immer "^1.2.1"
-    is-whitespace-character "^1.0.2"
-    js-yaml "^3.11.0"
-    literate-elm "^0.2.0"
-    lodash "^4.17.5"
-    narrative-schema "^0.1.1"
-    narrative-schema-label "^0.1.1"
-    remark-frontmatter "^1.2.0"
-    remark-parse "^5.0.0"
-    to-vfile "^2.2.0"
-    unified "^6.1.6"
-    unist-util-select "^1.5.0"
-    unist-util-visit "^1.3.0"
-    vfile "^2.3.0"
 
 litvis@^0.2.2:
   version "0.2.2"
@@ -2630,6 +2604,29 @@ litvis@^0.2.2:
     is-whitespace-character "^1.0.2"
     js-yaml "^3.11.0"
     literate-elm "^0.3.0"
+    lodash "^4.17.5"
+    narrative-schema "^0.1.2"
+    narrative-schema-label "^0.1.2"
+    remark-frontmatter "^1.2.0"
+    remark-parse "^5.0.0"
+    temp-dir "^1.0.0"
+    to-vfile "^2.2.0"
+    unified "^6.1.6"
+    unist-util-select "^1.5.0"
+    unist-util-visit "^1.3.0"
+    vfile "^2.3.0"
+
+litvis@^0.2.3:
+  version "0.2.3"
+  resolved "https://registry.yarnpkg.com/litvis/-/litvis-0.2.3.tgz#fb8b9b2a442f01de55dbc54da3956b133df1ed02"
+  dependencies:
+    block-attributes "^0.2.1"
+    block-info "^0.2.1"
+    fs-extra "^5.0.0"
+    immer "^1.2.1"
+    is-whitespace-character "^1.0.2"
+    js-yaml "^3.11.0"
+    literate-elm "^0.3.1"
     lodash "^4.17.5"
     narrative-schema "^0.1.2"
     narrative-schema-label "^0.1.2"
@@ -2877,19 +2874,6 @@ nanomatch@^1.2.9:
     snapdragon "^0.8.1"
     to-regex "^3.0.1"
 
-narrative-schema-label@^0.1.1:
-  version "0.1.1"
-  resolved "https://registry.yarnpkg.com/narrative-schema-label/-/narrative-schema-label-0.1.1.tgz#90854c8716c246cd165ff0da947d1067abd697e8"
-  dependencies:
-    block-attributes "^0.2.0"
-    block-info "^0.2.0"
-    cheerio "0.15.0"
-    handlebars "^4.0.11"
-    html-entities "^1.2.1"
-    lodash "^4.17.5"
-    unist-util-visit "^1.3.0"
-    vfile "^2.3.0"
-
 narrative-schema-label@^0.1.2:
   version "0.1.2"
   resolved "https://registry.yarnpkg.com/narrative-schema-label/-/narrative-schema-label-0.1.2.tgz#d58cab0563f7fdace3a187708eef1351a585086d"
@@ -2902,17 +2886,6 @@ narrative-schema-label@^0.1.2:
     lodash "^4.17.5"
     unist-util-visit "^1.3.0"
     vfile "^2.3.0"
-
-narrative-schema@^0.1.1:
-  version "0.1.1"
-  resolved "https://registry.yarnpkg.com/narrative-schema/-/narrative-schema-0.1.1.tgz#a70141648880bcc4c735f1d7725b4dcba4c476d2"
-  dependencies:
-    jsonschema "^1.2.4"
-    lodash "^4.17.5"
-    narrative-schema-label "^0.1.1"
-    to-vfile "^2.2.0"
-    vfile "^2.3.0"
-    yamljs "^0.3.0"
 
 narrative-schema@^0.1.2:
   version "0.1.2"
@@ -3668,16 +3641,6 @@ rimraf@2, rimraf@^2.5.4, rimraf@^2.6.1:
 rimraf@~2.2.6:
   version "2.2.8"
   resolved "https://registry.yarnpkg.com/rimraf/-/rimraf-2.2.8.tgz#e439be2aaee327321952730f99a8929e4fc50582"
-
-run-elm@^2.2.0:
-  version "2.2.0"
-  resolved "https://registry.yarnpkg.com/run-elm/-/run-elm-2.2.0.tgz#06445ac40cd9d06741bdc3fa68e8f39f40582b25"
-  dependencies:
-    babel-polyfill "^6.26.0"
-    commander "^2.13.0"
-    fs-extra "^5.0.0"
-    node-elm-compiler "^4.3.0"
-    shelljs "^0.7.6"
 
 safe-buffer@^5.0.1, safe-buffer@^5.1.1, safe-buffer@~5.1.0, safe-buffer@~5.1.1:
   version "5.1.1"
