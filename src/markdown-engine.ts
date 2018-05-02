@@ -10,11 +10,11 @@ import {
 import * as cheerio from "cheerio";
 import { execFile } from "child_process";
 import * as fs from "fs";
-import { loadAndProcessLitvisNarrative } from "litvis";
 import {
   enhanceWithLitvis,
   initLitvisEnhancerCache,
   LitvisEnhancerCache,
+  loadAndProcessLitvisNarrative,
   postEnhanceWithLitvis,
   useMarkdownItLitvisFeatures,
 } from "litvis-integration-mume";
