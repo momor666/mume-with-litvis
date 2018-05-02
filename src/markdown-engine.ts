@@ -1,5 +1,4 @@
 // tslint:disable no-var-requires member-ordering
-
 import {
   parse as parseBlockAttributes,
   stringify as stringifyBlockAttributes,
@@ -11,6 +10,7 @@ import {
 import * as cheerio from "cheerio";
 import { execFile } from "child_process";
 import * as fs from "fs";
+import { loadAndProcessLitvisNarrative } from "litvis";
 import {
   enhanceWithLitvis,
   initLitvisEnhancerCache,
@@ -20,6 +20,7 @@ import {
 } from "litvis-integration-mume";
 import * as path from "path";
 import * as request from "request";
+import * as toVFile from "to-vfile";
 import { VFile } from "vfile";
 import * as YAML from "yamljs";
 
@@ -2817,6 +2818,19 @@ sidebarTOCBtn.addEventListener('click', function(event) {
       html = html.replace(/^\s*<p>\[MUMETOC\]<\/p>\s*/gm, this.tocHTML);
     }
 
+    // process current file with litvis
+    // TODO: pass all unsaved Atom files as virtual files
+    const processedNarrative = await loadAndProcessLitvisNarrative(
+      this.filePath,
+      [
+        toVFile({
+          path: this.filePath,
+          contents: inputString,
+        }),
+      ],
+      this.litvisEnhancerCache.litvisCache,
+    );
+
     /**
      * resolve image paths and render code block.
      */
@@ -2826,13 +2840,7 @@ sidebarTOCBtn.addEventListener('click', function(event) {
       this.config.mathRenderingOption,
       this.config.mathBlockDelimiters,
     );
-    await enhanceWithLitvis(
-      $,
-      inputString,
-      this.filePath,
-      this.litvisEnhancerCache,
-      MarkdownEngine.updateLintingReport,
-    );
+    await enhanceWithLitvis(processedNarrative, $, this.litvisEnhancerCache);
     await enhanceWithFencedDiagrams(
       $,
       this.graphsCache,
@@ -2860,8 +2868,13 @@ sidebarTOCBtn.addEventListener('click', function(event) {
       await enhanceWithExtendedTableSyntax($);
     }
 
-    const combinedPostEnhance = postEnhanceWithLitvis;
-    html = frontMatterTable + combinedPostEnhance($.html());
+    html =
+      frontMatterTable +
+      postEnhanceWithLitvis(
+        processedNarrative,
+        $.html(),
+        MarkdownEngine.updateLintingReport,
+      );
 
     /**
      * check slides
