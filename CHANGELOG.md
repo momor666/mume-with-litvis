@@ -1,7 +1,9 @@
-# CHANGELOG for `mume-with-litvis`
-
 This changelog is for the fork.
 See [`CHANGELOG-UPSTREAM.md`](CHANGELOG-UPSTREAM.md) of the changelog related to the [original mume library](https://github.com/shd101wyy/mume/).
+
+## 0.6.0
+
+* Improve parsing of narrative schemas, support label aliases and fix rules.
 
 ## 0.5.0
 
