@@ -18,6 +18,7 @@ import {
   postEnhanceWithLitvis,
   useMarkdownItLitvisFeatures,
 } from "litvis-integration-mume";
+import * as os from "os";
 import * as path from "path";
 import * as request from "request";
 import * as toVFile from "to-vfile";
@@ -2400,7 +2401,9 @@ sidebarTOCBtn.addEventListener('click', function(event) {
     this.filesCache = {};
     this.codeChunksData = {};
     this.graphsCache = {};
-    this.litvisEnhancerCache = await initLitvisEnhancerCache();
+    this.litvisEnhancerCache = await initLitvisEnhancerCache({
+      mumeWorkingDirectory: path.resolve(os.homedir(), ".mume"),
+    });
   }
 
   private frontMatterToTable(arg) {
