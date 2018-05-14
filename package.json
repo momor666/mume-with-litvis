@@ -1,6 +1,6 @@
 {
   "name": "mume-with-litvis",
-  "version": "0.6.4",
+  "version": "0.6.5",
   "description": "Fork of mume with added http://litvis.org/",
   "main": "out/src/mume.js",
   "typings": "out/src/mume.d.ts",
