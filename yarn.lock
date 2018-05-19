@@ -16,13 +16,13 @@
     esutils "^2.0.2"
     js-tokens "^3.0.0"
 
-"@kachkaev/run-elm@^2.4.3":
-  version "2.4.3"
-  resolved "https://registry.yarnpkg.com/@kachkaev/run-elm/-/run-elm-2.4.3.tgz#ba405efd300524a2a0fe1f5a40cfa772b8a7eae5"
+"@kachkaev/run-elm@^2.4.4":
+  version "2.4.4"
+  resolved "https://registry.yarnpkg.com/@kachkaev/run-elm/-/run-elm-2.4.4.tgz#db9e1d55053e770b10d72a830b7a6e26bbbc43dd"
   dependencies:
     babel-polyfill "^6.26.0"
     commander "^2.13.0"
-    fs-extra "^5.0.0"
+    fs-extra "^6.0.1"
     node-elm-compiler "^4.3.0"
     shelljs "^0.7.6"
 
@@ -1445,6 +1445,14 @@ fs-extra@^5.0.0:
     jsonfile "^4.0.0"
     universalify "^0.1.0"
 
+fs-extra@^6.0.1:
+  version "6.0.1"
+  resolved "https://registry.yarnpkg.com/fs-extra/-/fs-extra-6.0.1.tgz#8abc128f7946e310135ddc93b98bddb410e7a34b"
+  dependencies:
+    graceful-fs "^4.1.2"
+    jsonfile "^4.0.0"
+    universalify "^0.1.0"
+
 fs-minipass@^1.2.5:
   version "1.2.5"
   resolved "https://registry.yarnpkg.com/fs-minipass/-/fs-minipass-1.2.5.tgz#06c277218454ec288df77ada54a03b8702aacb9d"
@@ -2556,11 +2564,11 @@ linkify-it@^2.0.0:
   dependencies:
     uc.micro "^1.0.1"
 
-literate-elm@^0.6.2:
-  version "0.6.2"
-  resolved "https://registry.yarnpkg.com/literate-elm/-/literate-elm-0.6.2.tgz#e9c58bbf9f5911b13a97db04b1f9a6250731b581"
+literate-elm@^0.6.3:
+  version "0.6.3"
+  resolved "https://registry.yarnpkg.com/literate-elm/-/literate-elm-0.6.3.tgz#731ac9451e8f77f0c6f7693cf16852793b04daa9"
   dependencies:
-    "@kachkaev/run-elm" "^2.4.3"
+    "@kachkaev/run-elm" "^2.4.4"
     elm-string-representation "^1.1.2"
     execa "^0.10.0"
     fs-extra "^5.0.0"
@@ -2569,9 +2577,9 @@ literate-elm@^0.6.2:
     object-hash "^1.3.0"
     sleep-promise "^6.0.0"
 
-litvis-integration-mume@^0.5.2:
-  version "0.5.2"
-  resolved "https://registry.yarnpkg.com/litvis-integration-mume/-/litvis-integration-mume-0.5.2.tgz#30dd2f6cded3deb5801cfbc2e993f155a236725f"
+litvis-integration-mume@^0.5.3:
+  version "0.5.3"
+  resolved "https://registry.yarnpkg.com/litvis-integration-mume/-/litvis-integration-mume-0.5.3.tgz#bbcfe2f033080e4c12289f683a4c4aba990d502e"
   dependencies:
     "@types/yamljs" "^0.2.30"
     block-attributes "^0.2.2"
@@ -2579,7 +2587,7 @@ litvis-integration-mume@^0.5.2:
     cheerio "0.15.0"
     elm-string-representation "^1.1.2"
     html-entities "^1.2.1"
-    litvis "^0.5.2"
+    litvis "^0.5.3"
     lodash "^4.17.5"
     lru-cache "^4.1.2"
     markdown-it "^8.4.1"
@@ -2592,9 +2600,9 @@ litvis-integration-mume@^0.5.2:
     vfile "^2.3.0"
     yamljs "^0.3.0"
 
-litvis@^0.5.2:
-  version "0.5.2"
-  resolved "https://registry.yarnpkg.com/litvis/-/litvis-0.5.2.tgz#2452098e09c21055bbe93208b7afbe8114af82da"
+litvis@^0.5.3:
+  version "0.5.3"
+  resolved "https://registry.yarnpkg.com/litvis/-/litvis-0.5.3.tgz#409d07f92c9e9b5608ebe52f2d88a0b94a222a19"
   dependencies:
     "@types/unist" "^1.0.0"
     block-attributes "^0.2.2"
@@ -2604,7 +2612,7 @@ litvis@^0.5.2:
     immer "^1.2.1"
     is-whitespace-character "^1.0.2"
     kind-of "^6.0.2"
-    literate-elm "^0.6.2"
+    literate-elm "^0.6.3"
     lodash "^4.17.5"
     narrative-schema "^0.2.1"
     narrative-schema-label "^0.2.1"
