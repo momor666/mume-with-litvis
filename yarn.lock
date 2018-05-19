@@ -2577,9 +2577,9 @@ literate-elm@^0.6.3:
     object-hash "^1.3.0"
     sleep-promise "^6.0.0"
 
-litvis-integration-mume@^0.5.3:
-  version "0.5.3"
-  resolved "https://registry.yarnpkg.com/litvis-integration-mume/-/litvis-integration-mume-0.5.3.tgz#bbcfe2f033080e4c12289f683a4c4aba990d502e"
+litvis-integration-mume@^0.5.4:
+  version "0.5.4"
+  resolved "https://registry.yarnpkg.com/litvis-integration-mume/-/litvis-integration-mume-0.5.4.tgz#7f8f820b6744e0d08b75345d702248e910ddf8a4"
   dependencies:
     "@types/yamljs" "^0.2.30"
     block-attributes "^0.2.2"
@@ -2587,7 +2587,7 @@ litvis-integration-mume@^0.5.3:
     cheerio "0.15.0"
     elm-string-representation "^1.1.2"
     html-entities "^1.2.1"
-    litvis "^0.5.3"
+    litvis "^0.5.4"
     lodash "^4.17.5"
     lru-cache "^4.1.2"
     markdown-it "^8.4.1"
@@ -2600,9 +2600,9 @@ litvis-integration-mume@^0.5.3:
     vfile "^2.3.0"
     yamljs "^0.3.0"
 
-litvis@^0.5.3:
-  version "0.5.3"
-  resolved "https://registry.yarnpkg.com/litvis/-/litvis-0.5.3.tgz#409d07f92c9e9b5608ebe52f2d88a0b94a222a19"
+litvis@^0.5.4:
+  version "0.5.4"
+  resolved "https://registry.yarnpkg.com/litvis/-/litvis-0.5.4.tgz#2acfdc3c5e2c9a07092523a55987093ce8f91643"
   dependencies:
     "@types/unist" "^1.0.0"
     block-attributes "^0.2.2"
