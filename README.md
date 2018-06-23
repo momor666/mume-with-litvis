@@ -12,5 +12,5 @@ This research was in part supported by the EU under the EC Grant Agreement No. F
 
 ## Setup
 
-* [for Atom users](https://github.com/gicentre/markdown-preview-enhanced-with-litvis)
-* [for VSCode users](https://github.com/gicentre/vscode-markdown-preview-enhanced-with-litvis)
+- [for Atom users](https://github.com/gicentre/markdown-preview-enhanced-with-litvis)
+- [for VSCode users](https://github.com/gicentre/vscode-markdown-preview-enhanced-with-litvis)
